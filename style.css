@@ -1,0 +1,91 @@
+body {
+	border: 1px solid red;
+	height: 100vh;
+}
+
+.calc-container {
+	height: 700px;
+	width: 500px;
+	margin: 0 auto;
+	border: 10px solid black;
+    box-shadow:  20px 15px 9px rgb(48, 48, 48);
+}
+
+.screen {
+	grid-column: 1 / 5;
+	grid-row: 1 / 2;
+	border: 3px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	font-size: 80px;
+	background-color: lightgray;
+    
+}
+
+.numBtns {
+	display: grid;
+	height: 700px;
+	width: 500px;
+	border: 1px solid black;
+	grid-template-columns: repeat(4, 1fr);
+	/* grid-template-rows: repeat(6, 1fr); */
+	color: black;
+}
+
+.zero {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 6;
+}
+
+.divide,
+.ac,
+.plus-minus,
+.percent,
+.divide,
+.seven,
+.eight,
+.nine,
+.multiply,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.minus,
+.plus,
+.zero,
+.period,
+.equals,
+.one,
+.two,
+.three {
+	border: 3px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 80px;
+}
+
+.bottom-row {
+	display: grid;
+	grid-template-columns: 249px 124px 124.5px;
+	grid-template-rows: 130px;
+	border: 2px solid black;
+}
+
+.plus-minus,
+.percent,
+.divide,
+.multiply,
+.minus,
+.plus,
+.equals {
+	background-color: lightblue;
+}
+
+.ac {
+	background-color: pink;
+}
