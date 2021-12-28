@@ -12,6 +12,12 @@ const clear = document.querySelector('.clear');
 const equals = document.querySelector('#equalBtn');
 const negPlus = document.querySelector('#neg');
 const percent = document.querySelector('#percentBtn');
+const buttons = document.querySelectorAll('button');
+
+window.addEventListener('keydown', function (e) {
+	const key = document.querySelector(`button[data-key='${e.keyCode}']`);
+	key.click();
+});
 
 const clearScreen = () => {
 	clear.addEventListener('click', (e) => {
@@ -160,14 +166,12 @@ const percentSign = () => {
 			firstValue = displayValue;
 			document.querySelector('.screen').textContent = displayValue;
 			document.getElementById('period').disabled = true;
-
 		}
 		if (secondValue !== '') {
 			displayValue = (displayValue / 100).toString();
 			secondValue = displayValue;
 			document.querySelector('.screen').textContent = displayValue;
 			document.getElementById('period').disabled = true;
-
 		}
 	});
 };
