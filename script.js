@@ -159,11 +159,15 @@ const percentSign = () => {
 			displayValue = (displayValue / 100).toString();
 			firstValue = displayValue;
 			document.querySelector('.screen').textContent = displayValue;
+			document.getElementById('period').disabled = true;
+
 		}
 		if (secondValue !== '') {
 			displayValue = (displayValue / 100).toString();
 			secondValue = displayValue;
 			document.querySelector('.screen').textContent = displayValue;
+			document.getElementById('period').disabled = true;
+
 		}
 	});
 };
