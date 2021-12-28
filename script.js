@@ -10,6 +10,8 @@ const operators = document.querySelectorAll('.operators');
 const numBtn = document.querySelectorAll('.num-btns');
 const clear = document.querySelector('.clear');
 const equals = document.querySelector('#equalBtn');
+const negPlus = document.querySelector('#neg');
+const percent = document.querySelector('#percentBtn');
 
 const clearScreen = () => {
 	clear.addEventListener('click', (e) => {
@@ -38,14 +40,15 @@ const firstInput = () => {
 			}
 
 			if (operator !== '') {
+				document.getElementById('period').disabled = false;
+
 				secondValue = secondValue + String(e.target.textContent);
 				displayValue = secondValue;
 				document.querySelector('.screen').textContent = displayValue;
 			}
-
-			// if (firstValue !== '' && secondValue !== '') {
-			// 	secondValue = '';
-			// }
+			if (displayValue.includes('.')) {
+				document.getElementById('period').disabled = true;
+			}
 			if (displayValue.length > 12) {
 				document.querySelector('.screen').textContent = 'Error';
 			} else {
@@ -89,42 +92,27 @@ const operatorInput = () => {
 
 operatorInput();
 
-// const secondInput = () => {
-// 	for (let i = 0; i < numBtn.length; i++) {
-// 		numBtn[i].addEventListener('click', (e) => {
-// 			if (operator !== '') {
-// 				secondValue = e.target.textContent;
-// 				displayValue = secondValue;
-// 				document.querySelector('.screen').textContent = displayValue;
-// 			}
-// 			if (operator !== '' && firstValue === displayValue) {
-// 				secondValue = '';
-// 				document.querySelector('.screen').textContent = displayValue;
-// 			}
-// 		});
-// 	}
-// };
-
-// secondInput();
-
 const results = () => {
 	equals.addEventListener('click', (e) => {
 		if (operator === '+') {
 			add(firstValue, secondValue);
-			document.querySelector('.screen').textContent = displayValue;
+			document.querySelector('.screen').textContent = roundUp(displayValue, 2);
 		}
 		if (operator === '-') {
 			subtract(firstValue, secondValue);
-			document.querySelector('.screen').textContent = displayValue;
+			document.querySelector('.screen').textContent = roundUp(displayValue, 2);
+			e;
 		}
 		if (operator === '*') {
 			multiply(firstValue, secondValue);
+			document.querySelector('.screen').textContent = roundUp(displayValue, 2);
 		}
 		if (operator === '/' && secondValue === '0') {
-			return document.querySelector('.screen').textContent = 'Just NOO';
+			return (document.querySelector('.screen').textContent = 'Just NOO');
 		}
 		if (operator === '/') {
 			divide(firstValue, secondValue);
+			document.querySelector('.screen').textContent = roundUp(displayValue, 2);
 		}
 	});
 };
@@ -133,36 +121,55 @@ results();
 
 const add = () => {
 	return (displayValue = Number(firstValue) + Number(secondValue));
-	// document.querySelector('.screen').textContent = displayValue;
 };
 const subtract = () => {
 	return (displayValue = Number(firstValue) - Number(secondValue));
-	// document.querySelector('.screen').textContent = displayValue;
 };
 const multiply = () => {
-	displayValue = Number(firstValue) * Number(secondValue);
-	document.querySelector('.screen').textContent = displayValue;
+	return (displayValue = Number(firstValue) * Number(secondValue));
 };
 const divide = () => {
-	displayValue = Number(firstValue) / Number(secondValue);
-	document.querySelector('.screen').textContent = displayValue;
+	return (displayValue = Number(firstValue) / Number(secondValue));
 };
 
-// const operate = () => {
-// 	if (operator === '+') {
-// 		add(firstValue, secondValue);
-// 	}
-// 	if (operator === '-') {
-// 		return subtract(displayValue, secondValue);
-// 	}
-// 	if (operator === '*') {
-// 		return multiply(displayValue, secondValue);
-// 	}
-// 	if (operator === '/') {
-// 		return divide(displayValue, secondValue);
-// 	} else {
-// 		return 'To Infinity and Beyond!';
-// 	}
-// };
+// Math.round Functionality
+
+let roundUp = (num, places) => {
+	const x = Math.pow(10, places);
+	return Math.round(num * x) / x;
+};
+
+const negSign = () => {
+	negPlus.addEventListener('click', (e) => {
+		if (secondValue === '') {
+			displayValue = (displayValue *= -1).toString();
+			firstValue = displayValue;
+			document.querySelector('.screen').textContent = displayValue;
+		}
+		if (secondValue !== '') {
+			displayValue = (displayValue *= -1).toString();
+			secondValue = displayValue;
+			document.querySelector('.screen').textContent = displayValue;
+		}
+	});
+};
+const percentSign = () => {
+	percentBtn.addEventListener('click', (e) => {
+		if (secondValue === '') {
+			displayValue = (displayValue / 100).toString();
+			firstValue = displayValue;
+			document.querySelector('.screen').textContent = displayValue;
+		}
+		if (secondValue !== '') {
+			displayValue = (displayValue / 100).toString();
+			secondValue = displayValue;
+			document.querySelector('.screen').textContent = displayValue;
+		}
+	});
+};
+
+percentSign();
+negSign();
+roundUp();
 
 clearScreen();

@@ -8,7 +8,7 @@ body {
 	width: 500px;
 	margin: 0 auto;
 	border: 10px solid black;
-    box-shadow:  20px 15px 9px rgb(48, 48, 48);
+	box-shadow: 20px 15px 9px rgb(48, 48, 48);
 }
 
 .screen {
@@ -20,7 +20,6 @@ body {
 	justify-content: flex-end;
 	font-size: 80px;
 	background-color: lightgray;
-    
 }
 
 .numBtns {
@@ -39,37 +38,16 @@ body {
 	grid-row-start: 6;
 }
 
-.operators,
-.clear,
-.plus-minus,
-.percent,
-.divide,
-.seven,
-.eight,
-.nine,
-.multiply,
-.four,
-.five,
-.six,
-.seven,
-.eight,
-.nine,
-.minus,
-.plus,
-.zero,
-.period,
-.equals,
-.num-btns,
-.two,
-.three {
+button {
 	border: 3px solid black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 80px;
+	color: black;
 }
 
-.plus-minus,
+#neg,
 .percent,
 .operators,
 .multiply,
@@ -81,4 +59,9 @@ body {
 
 #ac {
 	background-color: pink;
+}
+
+button:disabled,
+button[disabled] {
+	color: black;
 }
