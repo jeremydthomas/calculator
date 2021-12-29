@@ -70,4 +70,9 @@ button:active {
 	background-color: red;
 }
 
-
+@media (max-width: 320px) {
+	/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+}
+@media (max-width: 480px) {
+	/* smartphones, Android phones, landscape iPhone */
+}
