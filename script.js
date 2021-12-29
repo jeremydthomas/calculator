@@ -15,7 +15,7 @@ const percent = document.querySelector('#percentBtn');
 const buttons = document.querySelectorAll('button');
 
 window.addEventListener('keydown', function (e) {
-	const key = document.querySelector(`button[data-key='${e.keyCode}']`);
+	const key = document.querySelector(`button[data-key='${e.key}']`);
 	key.click();
 });
 
@@ -27,6 +27,8 @@ const clearScreen = () => {
 			secondValue = '';
 			operator = '';
 			screen.textContent = 0;
+			document.getElementById('period').disabled = false;
+
 		}
 	});
 };
@@ -120,6 +122,7 @@ const results = () => {
 			divide(firstValue, secondValue);
 			document.querySelector('.screen').textContent = roundUp(displayValue, 2);
 		}
+		secondValue = '';
 	});
 };
 
